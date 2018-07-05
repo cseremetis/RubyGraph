@@ -1,2 +1,5 @@
-# RubyGraph
-A Graph Implementation using Ruby. Graphs are undirected. More to come.
+#RubyGraph
+==========
+A graph module and simple, intuitive implementations
+written in Ruby. Written by Christian Seremetis
+April 8, 2018
