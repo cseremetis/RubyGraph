@@ -5,6 +5,11 @@
 module Graph
 	attr_reader :nodes
 
+	#Returns the node with the given data.
+	#@param data the data stored in the node
+	def gatherNode(data)
+	end
+
 	#Add an edge to the graph.
 	#@param start the starting node
 	#@param finish the ending node 
@@ -18,24 +23,13 @@ module Graph
 	end
 
 	#Prints a string representation of the graph
-	def toString
+	def print
 	end
 
-	#Nested Node class
-	#Nodes store three instance variables
-	#to: an array of adjacent nodes from which the given one points
-	#from: an array of adjacent nodes pointing towards the given one
-	#data: the data stored in the node
-	class Node
-		attr_reader :to, :from, :data
-		attr_accessor :pathMarker
-
-		#Public constructor.
-		#@param data the data stored in the node
-		def initialize(data)
-			@to = []
-			@from = []
-			@data = data
-		end
+	#Searches over the nodes by breadth
+	#@param root the starting node
+	#@param subject the node we're looking for
+	#@return the shortest path between nodes
+	def breadthFirstSearch(root, subject)
 	end
 end
