@@ -32,7 +32,7 @@ class BasicGraph include Graph
 		return node
 	end
 
-	def toString
+	def print
 		result = ""
 		@nodes.each do |n|
 			n.to.each do |t|
@@ -43,9 +43,6 @@ class BasicGraph include Graph
 		print result
 	end
 
-	#Only applies to subgraphs of connected nodes
-	#@param root data stored in the starting node
-	#@param subject what we're searching for
 	def breadthFirstSearch(root, subject)
 		queue = []
 		#the shortest path between the two nodes
@@ -70,7 +67,7 @@ class BasicGraph include Graph
 						puts p.data
 					end
 
-					return nil
+					return path
 				end
 
 				queue.insert(0, t)
@@ -85,6 +82,24 @@ class BasicGraph include Graph
 	#@param subject what we're searching for
 	def depthFirstSearch(root, subject)
 		#...
+	end
+
+	#Nested Node class
+	#Nodes store three instance variables
+	#to: an array of adjacent nodes from which the given one points
+	#from: an array of adjacent nodes pointing towards the given one
+	#data: the data stored in the node
+	class Node
+		attr_reader :to, :from, :data
+		attr_accessor :pathMarker
+
+		#Public constructor.
+		#@param data the data stored in the node
+		def initialize(data)
+			@to = []
+			@from = []
+			@data = data
+		end
 	end
 
 	private
