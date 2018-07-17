@@ -2,7 +2,7 @@
 
 require 'test/unit'
 
-require_relative '../BasicGraph.rb'
+require_relative '../examples/BasicGraph.rb'
 
 class GraphTest < Test::Unit::TestCase
 	#create test case
