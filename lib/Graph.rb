@@ -32,4 +32,11 @@ module Graph
 	#@return the shortest path between nodes
 	def breadthFirstSearch(root, subject)
 	end
+
+	#Only applies to subgraphs of connected nodes
+	#@param root data stored in the starting node
+	#@param subject what we're searching for
+	def depthFirstSearch(root, subject)
+		
+	end
 end
