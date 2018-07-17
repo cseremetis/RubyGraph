@@ -5,26 +5,25 @@ require_relative './lib/Graph.rb'
 #Edges do not store data
 class BasicGraph include Graph
 
+	QUEUE = []
+
 	#Public constructor initializes nodes array.
 	def initialize
 		@nodes = []
 	end
 
-	#Finds a specific node within the graph.
-	#@param data stored in the node we're looking for
 	def gatherNode(data)
-		@nodes.select { |n| n.data == data }[0]
+		@nodes.bsearch { |n| n.data == data}
 	end
 
 	def insertEdge(start, finish)
 		if start == finish || edge?(start, finish)
 			raise "Invalid Edge input"
 		end
-
+		
 		start.to << finish
 		finish.from << start
 	end
-
 	
 	def insertNode(data)
 		node = Node.new(data)
@@ -36,7 +35,7 @@ class BasicGraph include Graph
 		result = ""
 		@nodes.each do |n|
 			n.to.each do |t|
-				result = result + "#{n.data} -> #{t.data}\n"
+				result += "#{n.data} -> #{t.data}\n"
 			end
 		end
 
@@ -44,44 +43,50 @@ class BasicGraph include Graph
 	end
 
 	def breadthFirstSearch(root, subject)
-		queue = []
 		#the shortest path between the two nodes
 		path = []
-		queue.insert(0, root)
+		QUEUE.insert(0, root)
 
-		while queue.any?
-			node = queue.pop
+		while QUEUE.any?
+			node = QUEUE.pop
 			node.to.each do |t|
 				t.pathMarker = node
 
 				if t == subject
-					counter = subject
-					while counter.pathMarker != nil
-						path.insert(0, counter)
-						counter = counter.pathMarker
-					end
-
-					path.insert(0, root)
-					
-					path.each do |p|
-						puts p.data
-					end
-
-					return path
+					return true
 				end
 
-				queue.insert(0, t)
+				QUEUE.insert(0, t)
 			end
 		end
 
-		puts "no path between nodes"
+		return false
 	end
 
-	#Only applies to subgraphs of connected nodes
-	#@param root data stored in the starting node
-	#@param subject what we're searching for
+	# DFS Implementation here starts from root,
+	# adds all outgoing vertices into the QUEUE
+	# and runs recursively until we find the subject
 	def depthFirstSearch(root, subject)
-		#...
+		#puts root.data
+		if root == subject
+			return root
+		elsif !root.to.any?
+			return root
+		else
+			root.to.each do |n|
+				#puts n.data
+			 	QUEUE.insert(0, n)
+			end
+		end
+
+		loop do
+			node = QUEUE.pop
+			root.pathMarker = node
+			@tester = depthFirstSearch(node, subject)
+			break if @tester == subject
+		end
+
+		return @tester
 	end
 
 	#Nested Node class
@@ -101,6 +106,7 @@ class BasicGraph include Graph
 			@data = data
 		end
 	end
+	
 
 	private
 		#Checks to see if an edge exists between two nodes
