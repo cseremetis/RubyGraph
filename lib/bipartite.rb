@@ -1,3 +1,4 @@
-module Bipartite
-	
+module Graph
+	class Bipartite
+	end
 end	
