@@ -67,14 +67,12 @@ class BasicGraph include Graph
 	# adds all outgoing vertices into the QUEUE
 	# and runs recursively until we find the subject
 	def depthFirstSearch(root, subject)
-		#puts root.data
 		if root == subject
 			return root
 		elsif !root.to.any?
 			return root
 		else
 			root.to.each do |n|
-				#puts n.data
 			 	QUEUE.insert(0, n)
 			end
 		end
