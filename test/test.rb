@@ -2,12 +2,12 @@
 
 require 'test/unit'
 
-require_relative '../examples/BasicGraph.rb'
+require_relative '../lib/Base.rb'
 
-class GraphTest < Test::Unit::TestCase
+class BaseTest < Test::Unit::TestCase
 	#create test case
 	def setup
-		@graph = BasicGraph.new
+		@graph = Graph::Base.new
 	end
 
 	#gathering a node should actually gather the right node
@@ -23,7 +23,7 @@ class GraphTest < Test::Unit::TestCase
 	def test_add_node
 		a = @graph.insertNode("A")
 		assert_equal(a.data, "A")
-		assert_equal(@graph.nodes.length, 1)
+		assert_equal(@graph.length, 1)
 	end
 
 	#adding edge should create appropriate
