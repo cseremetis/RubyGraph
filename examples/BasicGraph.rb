@@ -1,7 +1,6 @@
-require_relative './lib/Graph.rb'
-
+require_relative './lib/Base.rb'
 
 #General class for directed graphs
-#Edges do not store data
+#This is the most basic example possible
 class BasicGraph < Graph::Base
 end
