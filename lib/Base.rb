@@ -1,6 +1,6 @@
 #!
 #Author: Christian Seremetis
-#8 April 2018
+#8 April 2018 
 #An outline for all forms of graphs
 module Graph
 	class Base
