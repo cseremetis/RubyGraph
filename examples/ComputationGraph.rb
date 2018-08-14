@@ -26,25 +26,25 @@ network.insertEdge($node2, $node4)
 network.insertEdge($node3, $node4)
 
 def travDown(num)
-	($node3.data.call($node1.data.call(num)))
+  ($node3.data.call($node1.data.call(num)))
 end
 
 def travUp(num)
-	($node2.data.call($node1.data.call(num)))
+  ($node2.data.call($node1.data.call(num)))
 end
 
 def learn(a, init)
-	while (a - init).abs > 0.001
-			if a > init
-				a = travDown(a)
-			else
-				a = travUp(a)
-			end
-	end
+  while (a - init).abs > 0.001
+      if a > init
+        a = travDown(a)
+      else
+        a = travUp(a)
+      end
+  end
 
-	$node4.data.call(a)
+  $node4.data.call(a)
 
-	return a
+  return a
 end
 
 binding.irb
