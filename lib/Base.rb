@@ -26,12 +26,12 @@ module Graph
 
 		#Add an edge to the graph.
 		#@param start the starting node
-		#@param finish the ending node 
+		#@param finish the ending node
 		def insertEdge(start, finish)
 			if start == finish || edge?(start, finish)
 				raise "Invalid Edge input"
 			end
-			
+
 			start.to << finish
 			finish.from << start
 		end
@@ -53,7 +53,7 @@ module Graph
 			if node.to.any? || node.from.any?
 				raise "cannot remove node without removing edges first"
 			end
-			
+
 			@nodes.delete(node)
 		end
 
@@ -146,7 +146,7 @@ module Graph
 				@data = data
 			end
 		end
-		
+
 
 		private
 			#Checks to see if an edge exists between two nodes
