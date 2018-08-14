@@ -119,6 +119,8 @@ module Graph
 
 			loop do
 				node = QUEUE.pop
+				#Sets pathMarkers so we can backtrace routes by
+				#iterating through nodes
 				root.pathMarker = node
 				@tester = depthFirstSearch(node, subject)
 				break if @tester == subject
